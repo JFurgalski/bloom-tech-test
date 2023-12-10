@@ -6,7 +6,7 @@ import { SingleStreakProps } from "./SingleStreak.types";
 const SingleStreak: React.FC<SingleStreakProps> = ({}) => {
   return (
     <View style={styles.container}>
-      <Text>Test</Text>
+      <Text>I am the single streak comp</Text>
     </View>
   );
 };
