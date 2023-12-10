@@ -1,1 +1,5 @@
-export interface SingleStreakProps {}
+export interface SingleStreakProps {
+  hasStreak: boolean;
+  isCurrentDay: boolean;
+  isPerfectWeek: boolean;
+}
