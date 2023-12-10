@@ -20,7 +20,7 @@ const SingleStreak: React.FC<SingleStreakProps> = ({
             start={{ x: 1, y: 0 }}
             end={{ x: 1, y: 1 }}
           >
-            <Icon name="flame" />
+            {isPerfectWeek ? <Icon name="flame" /> : <Icon name="tick" />}
           </LinearGradient>
         ) : (
           <View />
