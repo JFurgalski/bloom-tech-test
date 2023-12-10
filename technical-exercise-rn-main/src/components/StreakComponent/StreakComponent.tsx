@@ -7,7 +7,7 @@ import SingleStreak from "../SingleStreak/SingleStreak";
 const StreakComponent: React.FC<StreakComponentProps> = ({}) => {
   return (
     <View style={styles.container}>
-      <SingleStreak />
+      <SingleStreak isCurrentDay={true} isPerfectWeek={false} hasStreak={false} />
       <Text>I am the streak component</Text>
     </View>
   );

@@ -1,12 +1,32 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { styles } from "./SingleStreak.styles";
+import { Icon } from "../Icon/Icon";
 import { SingleStreakProps } from "./SingleStreak.types";
+import { LinearGradient } from "react-native-svg";
+import { projectPalette } from "../../styles/projectPallete";
 
-const SingleStreak: React.FC<SingleStreakProps> = ({}) => {
+const SingleStreak: React.FC<SingleStreakProps> = ({
+  hasStreak,
+  isCurrentDay,
+  isPerfectWeek,
+}) => {
   return (
     <View style={styles.container}>
-      <Text>I am the single streak comp</Text>
+      <View>
+        {hasStreak ? (
+          <LinearGradient
+            colors={projectPalette.streakGradient}
+            start={{ x: 1, y: 0 }}
+            end={{ x: 1, y: 1 }}
+          >
+            <Icon name="flame" />
+          </LinearGradient>
+        ) : (
+          <View />
+        )}
+        {isCurrentDay && hasStreak && <View />}
+      </View>
     </View>
   );
 };
