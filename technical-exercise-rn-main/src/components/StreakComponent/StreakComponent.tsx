@@ -9,10 +9,9 @@ const StreakComponent: React.FC<StreakComponentProps> = ({}) => {
     <View style={styles.container}>
       <SingleStreak
         isCurrentDay={true}
-        isPerfectWeek={false}
-        hasStreak={false}
+        isPerfectWeek={true}
+        hasStreak={true}
       />
-      <Text>I am the streak component</Text>
     </View>
   );
 };
