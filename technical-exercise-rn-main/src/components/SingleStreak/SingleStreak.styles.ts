@@ -32,6 +32,25 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: projectPalette.foundationPrimary,
   },
+
+  singleStreakBackground: {
+    backgroundColor: projectPalette.black,
+    width: "100%",
+    height: "100%",
+    borderRadius: 25,
+  },
+
+  dayText: {
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: "400",
+    color: projectPalette.foundationPrimary,
+    marginBottom: 16,
+  },
+
+  withoutStreak: {
+    backgroundColor: projectPalette.darkGray,
+  },
 });
 
 export { styles };

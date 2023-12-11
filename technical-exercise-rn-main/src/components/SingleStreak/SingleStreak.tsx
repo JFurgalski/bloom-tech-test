@@ -24,7 +24,7 @@ const SingleStreak: React.FC<SingleStreakProps> = ({
             {isPerfectWeek ? <Icon name="flame" /> : <Icon name="tick" />}
           </LinearGradient>
         ) : (
-          <View />
+          <View style={[styles.singleStreakBackground, styles.withoutStreak]} />
         )}
         {isCurrentDay && hasStreak && (
           <View style={styles.currentDayIndicator} />
