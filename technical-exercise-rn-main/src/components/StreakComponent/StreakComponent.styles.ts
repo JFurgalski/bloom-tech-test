@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +11,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "90%",
+    width: width * 0.9,
+    marginHorizontal: -8,
   },
 
   dayContainer: {
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
   daysOfWeekWrapper: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 16,
+    paddingHorizontal: 18,
     alignItems: "center",
   },
 
