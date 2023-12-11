@@ -41,14 +41,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
   },
 
-  dayText: {
-    fontSize: 12,
-    lineHeight: 16,
-    fontWeight: "400",
-    color: projectPalette.foundationPrimary,
-    marginBottom: 16,
-  },
-
   withoutStreak: {
     backgroundColor: projectPalette.darkGray,
   },

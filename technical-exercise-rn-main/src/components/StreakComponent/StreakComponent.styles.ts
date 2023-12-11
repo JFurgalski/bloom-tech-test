@@ -12,6 +12,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "90%",
   },
+
+  dayContainer: {
+    flex: 1,
+    alignItems: "center",
+  },
+
+  daysOfWeekWrapper: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    alignItems: "center",
+  },
 });
 
 export { styles };
