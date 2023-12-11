@@ -37,21 +37,31 @@ const StreakComponent: React.FC<StreakComponentProps> = ({ streak }) => {
         (currentStreakLength / 7) % 1 === 0 && index < renderedDaysCount;
 
       return (
-        <View>
-          <Text>{day}</Text>
-          <SingleStreak
-            key={index}
-            hasStreak={hasStreak}
-            isCurrentDay={isCurrentDay}
-            isPerfectWeek={isPerfectWeek}
-          />
-        </View>
+        <SingleStreak
+          key={index}
+          hasStreak={hasStreak}
+          isCurrentDay={isCurrentDay}
+          isPerfectWeek={isPerfectWeek}
+        />
       );
     });
   };
 
+  const reshuffledDays: string[] = (() => {
+    const startingDayIndex: number = getStartingDayIndex();
+    return [
+      ...daysOfWeek.slice(startingDayIndex),
+      ...daysOfWeek.slice(0, startingDayIndex),
+    ];
+  })();
+
   return (
     <View style={styles.container}>
+      {reshuffledDays.map((day: string, index: number) => (
+        <View key={index}>
+          <Text>{day}</Text>
+        </View>
+      ))}
       <View style={styles.streak}>{renderStreak()}</View>
     </View>
   );
