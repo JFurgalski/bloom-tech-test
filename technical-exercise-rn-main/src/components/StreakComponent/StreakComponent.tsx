@@ -1,20 +1,20 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { styles } from "./StreakComponent.styles";
-import { StreakComponentProps } from "./StreakComponent.types";
+import { Text, View } from "react-native";
 import SingleStreak from "../SingleStreak/SingleStreak";
+import { styles } from "./StreakComponent.styles";
 import { daysOfWeek } from "../../constants";
-import { commonStyles, projectPalette } from "../../styles/projectPallete";
 import { LinearGradient } from "expo-linear-gradient";
+import { commonStyles, projectPalette } from "../../styles/projectPallete";
+import { StreakComponentProps } from "./StreakComponent.types";
 
 const StreakComponent: React.FC<StreakComponentProps> = ({ streak }) => {
-  const isFilleDaysCount = streak.filter(Boolean).length;
-  const isPerfectStreak = isFilleDaysCount === 7;
+  const filledDaysCount = streak.filter(Boolean).length;
+  const isPerfectStreak = filledDaysCount === 7;
 
   const getStartingDayIndex = (): number => {
-    if (StreakComponent.length > 0) {
+    if (streak.length > 0) {
       const startDate = new Date(streak[0]);
-      return startDate.getDate();
+      return startDate.getDay();
     }
     return 0;
   };
@@ -25,16 +25,19 @@ const StreakComponent: React.FC<StreakComponentProps> = ({ streak }) => {
     let renderedDaysCount = currentStreakLength % 7;
 
     const startingDayIndex: number = getStartingDayIndex();
-    const reshuffledDays: string[] = [
+    const adjustedDaysOfWeek: string[] = [
       ...daysOfWeek.slice(startingDayIndex),
       ...daysOfWeek.slice(0, startingDayIndex),
     ];
 
-    return reshuffledDays.map((day: string, index: number) => {
+    renderedDaysCount = renderedDaysCount === 0 ? 7 : renderedDaysCount;
+
+    return adjustedDaysOfWeek.map((day: string, index: number) => {
       const isCurrentDay: boolean =
         index === (new Date().getDay() + 7 - startingDayIndex) % 7;
       const hasStreak: boolean =
         index < renderedDaysCount || (renderedDaysCount === 1 && index === 0);
+
       const isPerfectWeek =
         (currentStreakLength / 7) % 1 === 0 && index < renderedDaysCount;
 
@@ -49,7 +52,7 @@ const StreakComponent: React.FC<StreakComponentProps> = ({ streak }) => {
     });
   };
 
-  const reshuffledDays: string[] = (() => {
+  const reshuffleDays: string[] = (() => {
     const startingDayIndex: number = getStartingDayIndex();
     return [
       ...daysOfWeek.slice(startingDayIndex),
@@ -60,20 +63,25 @@ const StreakComponent: React.FC<StreakComponentProps> = ({ streak }) => {
   return (
     <View style={styles.container}>
       <View style={styles.daysOfWeekWrapper}>
-        {reshuffledDays.map((day: string, index: number) => (
-          <View style={styles.dayContainer} key={index}>
+        {reshuffleDays.map((day: string, index: number) => (
+          <View key={index} style={styles.dayContainer}>
             <Text style={commonStyles.dayText}>{day}</Text>
           </View>
         ))}
       </View>
       {isPerfectStreak ? (
-        <LinearGradient
-          colors={projectPalette.perfectStreakGradient}
-          start={{ x: 1, y: 0 }}
-          end={{ x: 0, y: 1 }}
-        >
-          <View style={styles.streak}>{renderStreak()}</View>
-        </LinearGradient>
+        <View style={styles.maskContainer}>
+          <View style={styles.gradientWrapper}>
+            <LinearGradient
+              colors={projectPalette.perfectStreakGradient}
+              start={{ x: 1, y: 0 }}
+              end={{ x: 0, y: 1 }}
+              style={styles.gradient}
+            >
+              <View style={styles.streak}>{renderStreak()}</View>
+            </LinearGradient>
+          </View>
+        </View>
       ) : (
         <View style={styles.streak}>{renderStreak()}</View>
       )}

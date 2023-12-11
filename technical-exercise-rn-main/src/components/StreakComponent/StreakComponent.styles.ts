@@ -24,6 +24,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     alignItems: "center",
   },
+
+  gradient: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "flex-start",
+  },
+
+  maskContainer: {
+    overflow: "hidden",
+    borderRadius: 25,
+  },
+
+  gradientWrapper: {
+    borderRadius: 16,
+    alignItems: "center",
+    overflow: "hidden",
+    width: "100%",
+  },
 });
 
 export { styles };
