@@ -4,6 +4,8 @@ import { styles } from "./StreakComponent.styles";
 import { StreakComponentProps } from "./StreakComponent.types";
 import SingleStreak from "../SingleStreak/SingleStreak";
 import { daysOfWeek } from "../../constants";
+import { commonStyles, projectPalette } from "../../styles/projectPallete";
+import { LinearGradient } from "expo-linear-gradient";
 
 const StreakComponent: React.FC<StreakComponentProps> = ({ streak }) => {
   const isFilleDaysCount = streak.filter(Boolean).length;
@@ -57,12 +59,24 @@ const StreakComponent: React.FC<StreakComponentProps> = ({ streak }) => {
 
   return (
     <View style={styles.container}>
-      {reshuffledDays.map((day: string, index: number) => (
-        <View key={index}>
-          <Text>{day}</Text>
-        </View>
-      ))}
-      <View style={styles.streak}>{renderStreak()}</View>
+      <View style={styles.daysOfWeekWrapper}>
+        {reshuffledDays.map((day: string, index: number) => (
+          <View style={styles.dayContainer} key={index}>
+            <Text style={commonStyles.dayText}>{day}</Text>
+          </View>
+        ))}
+      </View>
+      {isPerfectStreak ? (
+        <LinearGradient
+          colors={projectPalette.perfectStreakGradient}
+          start={{ x: 1, y: 0 }}
+          end={{ x: 0, y: 1 }}
+        >
+          <View style={styles.streak}>{renderStreak()}</View>
+        </LinearGradient>
+      ) : (
+        <View style={styles.streak}>{renderStreak()}</View>
+      )}
     </View>
   );
 };

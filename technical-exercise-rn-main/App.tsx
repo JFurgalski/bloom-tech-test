@@ -7,6 +7,7 @@ import StreakComponent from "./src/components/StreakComponent/StreakComponent";
 export default function App() {
 
   const streakData: string[] = [
+    "2023-12-09T00:00:00+00:00",
     "2023-12-10T00:00:00+00:00",
     "2023-12-11T00:00:00+00:00",
   ];
