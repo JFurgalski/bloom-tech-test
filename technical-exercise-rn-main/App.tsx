@@ -5,10 +5,16 @@ import SingleStreak from "./src/components/SingleStreak/SingleStreak";
 import StreakComponent from "./src/components/StreakComponent/StreakComponent";
 
 export default function App() {
+
+  const streakData: string[] = [
+    "2023-12-11T00:00:00+00:00",
+  ];
+
+
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
-      <StreakComponent />
+      <StreakComponent streak={streakData} />
     </View>
   );
 }
