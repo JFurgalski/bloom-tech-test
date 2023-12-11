@@ -1,3 +1,5 @@
+import { StyleSheet } from "react-native";
+
 const projectPalette = {
   streakGradient: ["#E32EED", "#F76938"],
   darkGray: "#3b3b3b",
@@ -10,4 +12,14 @@ const projectPalette = {
   ],
 };
 
-export { projectPalette };
+const commonStyles = StyleSheet.create({
+  dayText: {
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: "400",
+    color: projectPalette.foundationPrimary,
+    marginBottom: 16,
+  },
+});
+
+export { projectPalette, commonStyles };

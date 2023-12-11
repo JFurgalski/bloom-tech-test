@@ -38,3 +38,5 @@ const Icon: FC<IconProps> = ({ name, style, fill, height, width }) => {
       return;
   }
 };
+
+export { Icon };

@@ -7,5 +7,5 @@ export type IconProps = {
   style?: StyleProp<TextStyle>;
   fill?: string;
   height?: number;
-  width: number;
+  width?: number;
 };
