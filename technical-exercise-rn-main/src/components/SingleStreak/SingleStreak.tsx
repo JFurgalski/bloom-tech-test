@@ -10,9 +10,10 @@ const SingleStreak: React.FC<SingleStreakProps> = ({
   hasStreak,
   isCurrentDay,
   isPerfectWeek,
+  testID,
 }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="single-streak-container">
       <View style={styles.circle}>
         {hasStreak ? (
           <LinearGradient
@@ -20,14 +21,22 @@ const SingleStreak: React.FC<SingleStreakProps> = ({
             start={{ x: 1, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={styles.gradient}
+            testID={isPerfectWeek ? "perfect-week-gradient" : "streak-gradient"}
           >
-            {isPerfectWeek ? <Icon name="flame" /> : <Icon name="tick" />}
+            {isPerfectWeek ? (
+              <Icon testID="perfect-week-icon" name="flame" />
+            ) : (
+              <Icon name="tick" />
+            )}
           </LinearGradient>
         ) : (
           <View style={[styles.singleStreakBackground, styles.withoutStreak]} />
         )}
         {isCurrentDay && hasStreak && (
-          <View style={styles.currentDayIndicator} />
+          <View
+            testID="current-day-indicator"
+            style={styles.currentDayIndicator}
+          />
         )}
       </View>
     </View>
